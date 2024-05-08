@@ -1,4 +1,4 @@
-const { Client, Discord, ActivityType } = require('discord.js');
+const { Discord, ActivityType } = require('discord.js');
 const keep_alive = require('./keep_alive.js')
 const client = new Discord.Client();
 // Replace TOKEN with your bot account's token
