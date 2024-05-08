@@ -1,14 +1,18 @@
-const { Discord, ActivityType } = require('discord'); //import discord
+const { Discord, ActivityType } = require('discord.js'); //import client from discord
 const keep_alive = require('./keep_alive.js')
 
-const client = new Discord.Client(); //create new client
+const client = new Discord.Client();
 
 client.on('ready', () => {
   console.log(`Logged in as ${client.user.tag}!`);
 });
 
 client.on('message', msg => {
-    if (msg.content === 'ping') {
+    // check if message isn't from us
+    if (msg.author == client.user) {
+      return;
+    }
+    else if (msg.content === 'ping') {
       msg.reply('Pong!');
     }
     else {
@@ -16,4 +20,4 @@ client.on('message', msg => {
     }
 });
 
-client.login(process.env.TOKEN);
+client.login(process.env.TOKEN); //login bot using token
