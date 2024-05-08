@@ -1,7 +1,8 @@
-const { Client, Discord, ActivityType } = require('discord.js'); //import client from discord
+const { Client, Discord, ActivityType } = require('discord.js');
 const keep_alive = require('./keep_alive.js')
 
-const client = new Discord.Client();
+// Replace TOKEN with your bot account's token
+const bot = new Eris(process.env.token);
 
 let status = [
   {
@@ -11,8 +12,8 @@ let status = [
   },
 ]
 
-client.on('ready', () => {
-  console.log(`Logged in as ${client.user.tag}!`);
+bot.on("error", (err) => {
+  console.error(err); // or your preferred logger
 });
 
-client.login(process.env.TOKEN); //login bot using token
+bot.connect(); // Get the bot to connect to Discord
