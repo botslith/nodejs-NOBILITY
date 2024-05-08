@@ -1,4 +1,8 @@
 const { Client, GatewayIntentBits, ActivityType, TextChannel } = require('discord.js'); //import client from discord
+require('dotenv').config();
+const express = require('express');
+const fs = require('fs');
+const path = require('path');
 const keep_alive = require('./keep_alive.js')
 
 const client = new Client({
