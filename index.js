@@ -1,8 +1,12 @@
-const Discord = require('discord.js'); //import client from discord
+const { Client, GatewayIntentBits, ActivityType, TextChannel } = require('discord.js'); //import client from discord
 const ActivityType = require('discord.js');
 const keep_alive = require('./keep_alive.js')
 
-const client = new Discord.Client();
+const client = new Client({
+  intents: Object.keys(GatewayIntentBits).map((a) => {
+    return GatewayIntentBits[a];
+  }),
+});
 
 let status = [
   {
