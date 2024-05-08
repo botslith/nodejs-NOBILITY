@@ -1,19 +1,19 @@
-const { Discord, ActivityType } = require('discord.js');
+const { Discord, ActivityType } = require('discord'); //import discord
 const keep_alive = require('./keep_alive.js')
-const client = new Discord.Client();
-// Replace TOKEN with your bot account's token
-client.login(process.env.TOKEN)
 
-let status = [
-  {
-    name: 'Under Ctrl',
-    type: ActivityType.Streaming,
-    url: 'https://youtu.be/2lgEZB4eEF0?si=cOLDecQGHarYx83_',
-  },
-]
+const client = new Discord.Client(); //create new client
 
-bot.on("error", (err) => {
-  console.error(err); // or your preferred logger
+client.on('ready', () => {
+  console.log(`Logged in as ${client.user.tag}!`);
 });
 
-bot.connect(); // Get the bot to connect to Discord
+client.on('message', msg => {
+    if (msg.content === 'ping') {
+      msg.reply('Pong!');
+    }
+    else {
+        msg.reply(msg.content);
+    }
+});
+
+client.login(process.env.TOKEN);
